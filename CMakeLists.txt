@@ -1,9 +1,9 @@
 project(Cuts CXX)
 
-HEADERS={
+set(HEADERS
     CbmCuts.h
-    ShineCuts.h
-}
+    ShineCuts.h)
+
 
 install(
         FILES
