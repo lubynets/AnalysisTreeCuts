@@ -12,8 +12,9 @@ AnalysisTree::Cuts* GetCbmEventCuts() {
 }
 
 AnalysisTree::Cuts* GetCbmTrackCuts() {
-  AnalysisTree::SimpleCut vtx_chi2("vtx_chi2", -1000, 18.6);
-  AnalysisTree::Cuts* rec_track_cuts{ new AnalysisTree::Cuts("VtxTracks")};
-  rec_track_cuts->AddCut(vtx_chi2);
+//   AnalysisTree::SimpleCut vtx_chi2("vtx_chi2", -1000, 18.6);
+//   AnalysisTree::Cuts* rec_track_cuts{ new AnalysisTree::Cuts("VtxTracks")};
+  AnalysisTree::Cuts* rec_track_cuts{nullptr};
+//   rec_track_cuts->AddCut(vtx_chi2);
   return rec_track_cuts;
 };
