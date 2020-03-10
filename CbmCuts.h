@@ -1,7 +1,9 @@
 #include "AnalysisTree/Cuts.h"
 #include "AnalysisTree/SimpleCut.h"
 
-AnalysisTree::Cuts* GetCbmEventCuts() {
+namespace AnalysisTree{
+
+Cuts* GetCbmEventCuts() {
   Cuts* event_cuts = new Cuts("event_cuts");
   SimpleCut vtx_x_cut("vtx_x", -0.5, 0.5);
   SimpleCut vtx_y_cut("vtx_y", -0.5, 0.5);
@@ -11,7 +13,7 @@ AnalysisTree::Cuts* GetCbmEventCuts() {
   return event_cuts;
 }
 
-AnalysisTree::Cuts* GetCbmTrackCuts() {
+Cuts* GetCbmTrackCuts() {
   Cuts* vertex_tracks_cuts = new Cuts("VertexTracks");
   SimpleCut vtx_chi2_track_cut("vtx_chi2", 0, 3);
   SimpleCut nhits_cut("nhits", 4, 100);
@@ -21,7 +23,7 @@ AnalysisTree::Cuts* GetCbmTrackCuts() {
   return vertex_tracks_cuts;
 };
 
-AnalysisTree::Cuts* GetCbmCentralityTrackCuts() {
+Cuts* GetCbmCentralityTrackCuts() {
   Cuts* vertex_tracks_cuts = new Cuts("VertexTracks");
   SimpleCut vtx_chi2_track_cut("vtx_chi2", 0, 3);
   SimpleCut nhits_cut("nhits", 4, 100);
@@ -32,7 +34,7 @@ AnalysisTree::Cuts* GetCbmCentralityTrackCuts() {
   return vertex_tracks_cuts;
 };
 
-AnalysisTree::Cuts* GetCbmTofHitsCuts() {
+Cuts* GetCbmTofHitsCuts() {
   Cuts* tof_cuts = new Cuts("TofHits");
   SimpleCut tof_cuts_dx("dx", -2, 2);
   SimpleCut tof_cuts_dy("dy", -1, 1);
@@ -42,7 +44,7 @@ AnalysisTree::Cuts* GetCbmTofHitsCuts() {
   return tof_cuts;
 };
 
-AnalysisTree::Cuts* GetCbmMcTracksCuts() {
+Cuts* GetCbmMcTracksCuts() {
 
   Cuts* sim_tracks_cut = new Cuts("sim_tracks_cut");
   SimpleCut mother_id_cut("mother_id", -1000, -0.5);
@@ -51,7 +53,7 @@ AnalysisTree::Cuts* GetCbmMcTracksCuts() {
   return sim_tracks_cut;
 };
 
-
+}
 
 
 
