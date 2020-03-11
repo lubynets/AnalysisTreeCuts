@@ -38,9 +38,8 @@ Cuts* GetCbmTofHitsCuts(const std::string& branch) {
   Cuts* tof_cuts = new Cuts(branch);
   SimpleCut tof_cuts_dx("dx", -2, 2);
   SimpleCut tof_cuts_dy("dy", -1, 1);
-  SimpleCut mc_cut("mc_pdg", 210, 212);
 
-  tof_cuts->AddCuts({tof_cuts_dx, tof_cuts_dy, mc_cut});
+  tof_cuts->AddCuts({tof_cuts_dx, tof_cuts_dy});
   return tof_cuts;
 };
 
