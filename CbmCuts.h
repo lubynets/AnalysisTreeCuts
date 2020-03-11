@@ -17,7 +17,7 @@ Cuts* GetCbmTrackCuts(const std::string& branch) {
   Cuts* vertex_tracks_cuts = new Cuts(branch);
   SimpleCut vtx_chi2_track_cut("vtx_chi2", 0, 3);
   SimpleCut nhits_cut("nhits", 4, 100);
-  SimpleCut chi2_cut({"chi2", "nhits"}, [](std::vector<double> par){ return par[0]/par[1] < 10; });
+  SimpleCut chi2_cut({"chi2", "nhits"}, [](std::vector<double> par){ return par[0]/par[1] < 3; });
   SimpleCut eta_cut("eta", 0, 6);
 
   vertex_tracks_cuts->AddCuts({vtx_chi2_track_cut, nhits_cut, chi2_cut, eta_cut});
