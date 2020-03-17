@@ -1,7 +1,7 @@
 #include "AnalysisTree/Cuts.h"
 #include "AnalysisTree/SimpleCut.h"
 
-AnalysisTree::Cuts* GetShineEventCuts() {
+AnalysisTree::Cuts* GetShineEventCuts(const std::string& branch = "RecEventHeader") {
 
   const float big_number = 1000000000.f; //std::numeric_limits<float>::infinity()
 
@@ -28,12 +28,12 @@ AnalysisTree::Cuts* GetShineEventCuts() {
 
   AnalysisTree::SimpleCut vtx_z_magic({"vtx_z"}, [](std::vector<double>& v) { return v[0]>-594 && v[0]<-590 && fabs(v[0]+591.9000244) > 0.00001; });
 
-  AnalysisTree::Cuts* event_cuts{ new AnalysisTree::Cuts("RecEventHeader")};
+  AnalysisTree::Cuts* event_cuts{ new AnalysisTree::Cuts(branch)};
   event_cuts->AddCuts({vtx_x, vtx_y, vtx_z_magic, e_psd, s1, s2, s1_s2, t2_t4, wfa_s1/*, wfa_s4*/});
   return event_cuts;
 }
 
-AnalysisTree::Cuts* GetShineTrackCuts() {
+AnalysisTree::Cuts* GetShineTrackCuts(const std::string& branch = "VtxTracks") {
   AnalysisTree::SimpleCut dcax("dcax", -2-0.083, 2-0.083);
   AnalysisTree::SimpleCut dcay("dcay", -1+0.006, 1+0.006);
   AnalysisTree::SimpleCut hits({"nhits_vtpc1", "nhits_vtpc2", "nhits_mtpc"},
@@ -45,7 +45,7 @@ AnalysisTree::Cuts* GetShineTrackCuts() {
                                      const double total_pot = hits[3]+hits[4]+hits[5];
                                      return total/total_pot>0.55 && total/total_pot<1.1;  } );
 
-  AnalysisTree::Cuts* rec_track_cuts{ new AnalysisTree::Cuts("VtxTracks")};
+  AnalysisTree::Cuts* rec_track_cuts{ new AnalysisTree::Cuts(branch)};
   rec_track_cuts->AddCuts({dcax, dcay, hits, hits_pot});
   return rec_track_cuts;
 };
