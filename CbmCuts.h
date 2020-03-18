@@ -3,8 +3,8 @@
 
 namespace AnalysisTree{
 
-Cuts* GetCbmEventCuts(const std::string& branch) {
-  Cuts* event_cuts = new Cuts(branch);
+Cuts* GetCbmEventCuts(std::string branch, std::string name="CbmGoodEvent") {
+  Cuts* event_cuts = new Cuts(std::move(name), std::move(branch));
   SimpleCut vtx_x_cut("vtx_x", -0.5, 0.5);
   SimpleCut vtx_y_cut("vtx_y", -0.5, 0.5);
   SimpleCut vtx_z_cut("vtx_z", -0.03, 0.03);
@@ -13,8 +13,8 @@ Cuts* GetCbmEventCuts(const std::string& branch) {
   return event_cuts;
 }
 
-Cuts* GetCbmTrackCuts(const std::string& branch) {
-  Cuts* vertex_tracks_cuts = new Cuts(branch);
+Cuts* GetCbmTrackCuts(std::string branch, std::string name="CbmGoodVertexTrack") {
+  Cuts* vertex_tracks_cuts = new Cuts(std::move(name), std::move(branch));
   SimpleCut vtx_chi2_track_cut("vtx_chi2", 0, 3);
   SimpleCut nhits_cut("nhits", 4, 100);
   SimpleCut chi2_cut({"chi2", "ndf"}, [](std::vector<double> par){ return par[0]/par[1] < 3; });
@@ -24,8 +24,8 @@ Cuts* GetCbmTrackCuts(const std::string& branch) {
   return vertex_tracks_cuts;
 };
 
-Cuts* GetCbmCentralityTrackCuts(const std::string& branch) {
-  Cuts* vertex_tracks_cuts = new Cuts(branch);
+Cuts* GetCbmCentralityTrackCuts(std::string branch, std::string name="CbmGoodCentralityTrack") {
+  Cuts* vertex_tracks_cuts = new Cuts(std::move(name), std::move(branch));
   SimpleCut vtx_chi2_track_cut("vtx_chi2", 0, 3);
   SimpleCut nhits_cut("nhits", 4, 100);
   SimpleCut chi2_cut({"chi2", "ndf"}, [](std::vector<double> par){ return par[0]/par[1] < 10; });
@@ -35,8 +35,8 @@ Cuts* GetCbmCentralityTrackCuts(const std::string& branch) {
   return vertex_tracks_cuts;
 };
 
-Cuts* GetCbmTofHitsCuts(const std::string& branch) {
-  Cuts* tof_cuts = new Cuts(branch);
+Cuts* GetCbmTofHitsCuts(std::string branch, std::string name="CbmGoodTofHit") {
+  Cuts* tof_cuts = new Cuts(std::move(name), std::move(branch));
   SimpleCut tof_cuts_dx("dx", -2, 2);
   SimpleCut tof_cuts_dy("dy", -1, 1);
 
@@ -44,9 +44,9 @@ Cuts* GetCbmTofHitsCuts(const std::string& branch) {
   return tof_cuts;
 };
 
-Cuts* GetCbmMcTracksCuts(const std::string& branch) {
+Cuts* GetCbmMcTracksCuts(std::string branch, std::string name="CbmMcPrimaryTrack") {
 
-  Cuts* sim_tracks_cut = new Cuts(branch);
+  Cuts* sim_tracks_cut = new Cuts(std::move(name), std::move(branch));
   SimpleCut mother_id_cut("mother_id", -1000, -0.5);
   sim_tracks_cut->AddCuts({mother_id_cut});
 
