@@ -47,7 +47,7 @@ Cuts* GetCbmTofHitsCuts(std::string branch, std::string name="CbmGoodTofHit") {
 Cuts* GetCbmMcTracksCuts(std::string branch, std::string name="CbmMcPrimaryTrack") {
 
   Cuts* sim_tracks_cut = new Cuts(std::move(name), std::move(branch));
-  SimpleCut mother_id_cut("mother_id", -1000, -0.5);
+  SimpleCut mother_id_cut("mother_id", 0, 100000);
   sim_tracks_cut->AddCuts({mother_id_cut});
 
   return sim_tracks_cut;
