@@ -56,14 +56,17 @@ Cuts* GetHadesMetaHitsCuts(std::string branch, std::string name="HadesGoodMetaHi
 Cuts* GetHadesWallHitsCuts(std::string branch, std::string name="HadesGoodWallHit") {
   Cuts* wall_cuts = new Cuts(std::move(name), std::move(branch));
   SimpleCut beta_cut("beta", 0, 1.0);
-  SimpleCut ring_by_ring_cuts({"ring", "beta"},
+  SimpleCut ring_by_ring_cuts({"ring", "beta", "signal"},
                               []( std::vector<double> vars ){
                                 if( vars.at(0) <= 5.0 )
-                                  return vars.at(1) > 0.84;
+                                  return vars.at(1) > 0.84
+                                      && vars.at(2) > 80.0;
                                 if( vars.at(0) >= 6.0 && vars.at(0) <= 7.0 )
-                                  return vars.at(1) > 0.85;
+                                  return vars.at(1) > 0.85
+                                      && vars.at(2) > 85.0;
                                 if( vars.at(0) >= 8.0)
-                                  return vars.at(1) > 0.80;
+                                  return vars.at(1) > 0.80
+                                      && vars.at(2) > 88.0;
                                 return false;
                               });
 
