@@ -8,7 +8,7 @@ Cuts* GetHadesEventCuts(std::string branch, std::string name="HadesGoodEvent") {
   SimpleCut vtx_xy_cut{{"vtx_x", "vtx_y"}, [](std::vector<double> r){
                          return sqrt(r.at(0)*r.at(0) + r.at(1)*r.at(1)) < 3.0;
                        }};
-  SimpleCut vtx_z_cut("vtx_z", -0.60, 0.0);
+  SimpleCut vtx_z_cut("vtx_z", -60.0, 0.0);
   SimpleCut vtx_chi2_cut("vtx_chi2", 0.5, 40);
   SimpleCut good_vertex_cut("good_vertex_cluster", 0.5, 1.5);
   SimpleCut good_vertex_candidate_cut("good_vertex_candidate", 0.5, 1.5);
