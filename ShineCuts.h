@@ -10,7 +10,7 @@ Cuts* GetShineEventCuts(std::string branch="RecEventHeader", std::string name="S
   SimpleCut vtx_x("vtx_x", -0.740, 0.131);
   SimpleCut vtx_y("vtx_y", -0.664, 0.022);
   SimpleCut e_psd("Epsd", 0.0000001, big_number);
-  SimpleCut fitted_vtx("fitted_vtx", 0, 0);
+  SimpleCut fitted_vtx("fitted_vtx", 0);
 
 //  SimpleCut bpd1_x("bpd1_x", -0.5, 0.3);
 //  SimpleCut bpd1_y("bpd1_y", -0.7, 1.1);
@@ -19,12 +19,12 @@ Cuts* GetShineEventCuts(std::string branch="RecEventHeader", std::string name="S
 //  SimpleCut bpd3_x("bpd3_x", -1.05, 0.35);
 //  SimpleCut bpd3_y("bpd3_y", -0.55, 0.05);
 
-  SimpleCut s1("s1", 115, 175);
-  SimpleCut s2("s2", 150, 500);
+  SimpleCut s1("s1", 115.f, 175.f);
+  SimpleCut s2("s2", 150.f, 500.f);
   SimpleCut s1_s2({"s1", "s2"}, [](std::vector<double>& s) { return s[0]*1.258 + s[1] < 390; } );
 
-  SimpleCut wfa_s1("wfa_s1", 4000, big_number );
-  SimpleCut wfa_t4("wfa_t4", 4000, big_number );
+  SimpleCut wfa_s1("wfa_s1", 4000.f, big_number );
+  SimpleCut wfa_t4("wfa_t4", 4000.f, big_number );
 
   SimpleCut t2_t4({"t2", "t4"}, [](std::vector<double>& t) { return t[0] || t[1]; } );
 
@@ -36,8 +36,8 @@ Cuts* GetShineEventCuts(std::string branch="RecEventHeader", std::string name="S
 }
 
 Cuts* GetShineTrackCuts(std::string branch="VtxTracks", std::string name="ShineGoodVertexTrack") {
-  SimpleCut dcax("dcax", -2-0.083, 2-0.083);
-  SimpleCut dcay("dcay", -1+0.006, 1+0.006);
+  SimpleCut dcax("dcax", -2-0.083f, 2-0.083f);
+  SimpleCut dcay("dcay", -1+0.006f, 1+0.006f);
   SimpleCut hits({"nhits_vtpc1", "nhits_vtpc2", "nhits_mtpc"},
                   [](std::vector<double>& hits) { return hits[0]+hits[1]>=15 && hits[0]+hits[1]+hits[2]>=30; } );
 
