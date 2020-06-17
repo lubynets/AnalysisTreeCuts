@@ -28,7 +28,7 @@ Cuts* GetShineEventCuts(std::string branch="RecEventHeader", std::string name="S
 
   SimpleCut t2_t4({"t2", "t4"}, [](std::vector<double>& t) { return t[0] || t[1]; } );
 
-  SimpleCut vtx_z_magic({"vtx_z"}, [](std::vector<double>& v) { return v[0]>-594 && v[0]<-590 && fabs(v[0]+591.9000244) > 0.00001; });
+  SimpleCut vtx_z_magic({"vtx_z"}, [](std::vector<double>& v) { return v[0]>-594 && v[0]<-590 && std::abs(v[0]+591.9000244) > 0.00001; });
 
   Cuts* event_cuts{ new Cuts(std::move(name), std::move(branch))};
   event_cuts->AddCuts({vtx_x, vtx_y, vtx_z_magic, e_psd, s1, s2, s1_s2, t2_t4, wfa_s1/*, wfa_s4*/});
