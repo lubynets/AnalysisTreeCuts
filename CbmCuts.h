@@ -8,7 +8,7 @@ Cuts* GetCbmEventCuts(std::string branch, std::string name="CbmGoodEvent") {
   SimpleCut vtx_x_cut({branch, "vtx_x"}, -0.5, 0.5);
   SimpleCut vtx_y_cut({branch, "vtx_y"}, -0.5, 0.5);
   SimpleCut vtx_z_cut({branch, "vtx_z"}, -0.03, 0.03);
-  SimpleCut vtx_chi2_cut({branch, "vtx_chi2"}, 0.5, 2);
+  SimpleCut vtx_chi2_cut({branch, "vtx_chi2"}, 0.8, 1.7);
   event_cuts->AddCuts( {vtx_x_cut, vtx_y_cut, vtx_z_cut, vtx_chi2_cut} );
   return event_cuts;
 }
