@@ -2,11 +2,6 @@
 find_package(ROOT REQUIRED)
 
 
-set(AnalysisTreeCuts_LIBRARY_PATH
-        ${AnalysisTreeCuts_SOURCE_DIR}/CutsLibrary CACHE STRING "Default path for the cuts library")
-set(AnalysisTreeCuts_ENVNAME
-        CUTS_LIBRARY_PATH CACHE STRING "Environment variable to set different lookup path")
-message("Cuts default Library Path: ${AnalysisTreeCuts_LIBRARY_PATH}")
 configure_file(AnalysisTreeCutsGen.hpp.in AnalysisTreeCutsGen.hpp)
 
 
@@ -28,4 +23,11 @@ add_library(AnalysisTreeCutsRegistry SHARED
 target_include_directories(AnalysisTreeCutsRegistry
         PRIVATE
         ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(AnalysisTreeCutsRegistry PUBLIC AnalysisTreeInfra ROOT::Core)
+target_link_libraries(AnalysisTreeCutsRegistry
+        PUBLIC
+        AnalysisTreeInfra
+        ROOT::Core
+        PRIVATE
+        #see https://gitlab.kitware.com/cmake/cmake/-/issues/17834
+        $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>
+        )
