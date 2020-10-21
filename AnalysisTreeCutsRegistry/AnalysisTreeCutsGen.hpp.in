@@ -12,6 +12,11 @@ const char *CutsDefaultLibraryPaths() {
   return "@AnalysisTreeCuts_LIBRARY_PATH@";
 }
 
+inline
+const char *CutsEnvironNameForLibraryPath() {
+  return "@AnalysisTreeCuts_ENVNAME@";
+}
+
 
 }
 

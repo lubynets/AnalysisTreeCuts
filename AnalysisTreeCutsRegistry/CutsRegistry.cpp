@@ -22,7 +22,13 @@ void AnalysisTree::RegisterCuts(const std::string& name, const Cuts &cuts) {
 
 std::vector<fs::path> GetLookupPaths() {
   std::vector<fs::path> result;
-  result.push_back(fs::current_path());
+  result.emplace_back(fs::current_path());
+  if (std::string env_path_str{AnalysisTree::CutsEnvironNameForLibraryPath()};
+      !env_path_str.empty()) {
+    try {
+      result.emplace_back(fs::path(env_path_str));
+    } catch (std::exception&e) {}
+  }
   result.emplace_back(AnalysisTree::CutsDefaultLibraryPaths());
   return result;
 }

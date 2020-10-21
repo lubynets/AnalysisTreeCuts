@@ -3,7 +3,9 @@ find_package(ROOT REQUIRED)
 
 
 set(AnalysisTreeCuts_LIBRARY_PATH
-        ${AnalysisTreeCuts_SOURCE_DIR}/CutsLibrary)
+        ${AnalysisTreeCuts_SOURCE_DIR}/CutsLibrary CACHE STRING "Default path for the cuts library")
+set(AnalysisTreeCuts_ENVNAME
+        CUTS_LIBRARY_PATH CACHE STRING "Environment variable to set different lookup path")
 message("Cuts default Library Path: ${AnalysisTreeCuts_LIBRARY_PATH}")
 configure_file(AnalysisTreeCutsGen.hpp.in AnalysisTreeCutsGen.hpp)
 
