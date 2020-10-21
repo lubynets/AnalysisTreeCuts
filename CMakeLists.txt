@@ -17,18 +17,18 @@ message("Cuts default Library Path: ${AnalysisTreeCuts_LIBRARY_PATH}")
 
 add_subdirectory(AnalysisTreeCutsRegistry)
 
-#set(HEADERS
-#    CbmCuts.h
-#    ShineCuts.h
-#    HadesCuts.h
-#)
-#
-#
-#install(
-#        FILES
-#        ${HEADERS}
-#        DESTINATION
-#        include
-#        COMPONENT
-#        Devel
-#)
+set(HEADERS
+    CbmCuts.h
+    ShineCuts.h
+    HadesCuts.h
+)
+
+
+install(
+        FILES
+        ${HEADERS}
+        DESTINATION
+        include
+        COMPONENT
+        Devel
+)
