@@ -49,7 +49,7 @@ private:
  * @param name
  * @param cuts
  */
-void RegisterCuts(const char* name, const Cuts &cuts);
+void RegisterCuts(const std::string& name, const Cuts &cuts);
 
 void LoadCutsLibrary(const char *path = "");
 

@@ -16,7 +16,7 @@ AnalysisTree::CutsRegistry &AnalysisTree::CutsRegistry::Instance() {
 }
 
 
-void AnalysisTree::RegisterCuts(const char *name, const Cuts &cuts) {
+void AnalysisTree::RegisterCuts(const std::string& name, const Cuts &cuts) {
   CutsRegistry::Instance().RegisterCuts(name, cuts);
 }
 
@@ -28,12 +28,10 @@ std::vector<fs::path> GetLookupPaths() {
 }
 
 void AnalysisTree::LoadCutsFromFile(const char *path) {
-  const std::vector<fs::path> lookup_paths(GetLookupPaths());
-
   fs::path p(path);
 
   if (p.is_relative()) {
-    for (auto &lookup_path : lookup_paths) {
+    for (auto &lookup_path : GetLookupPaths()) {
       auto full_path = lookup_path / p;
 
       int err_code;
