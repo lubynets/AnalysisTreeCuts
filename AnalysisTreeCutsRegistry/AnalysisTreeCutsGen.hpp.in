@@ -1,0 +1,18 @@
+//
+// Created by eugene on 21/10/2020.
+//
+
+#ifndef CUTS_ANALYSISTREECUTSREGISTRY_ANALYSISTREECUTSSTATIC_HPP_IN_HPP
+#define CUTS_ANALYSISTREECUTSREGISTRY_ANALYSISTREECUTSSTATIC_HPP_IN_HPP
+
+namespace AnalysisTree {
+
+inline
+const char *CutsDefaultLibraryPaths() {
+  return "@AnalysisTreeCuts_LIBRARY_PATH@";
+}
+
+
+}
+
+#endif //CUTS_ANALYSISTREECUTSREGISTRY_ANALYSISTREECUTSSTATIC_HPP_IN_HPP
