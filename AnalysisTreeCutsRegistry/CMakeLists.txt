@@ -21,6 +21,8 @@ add_library(AnalysisTreeCutsRegistry SHARED
         G__AnalysisTreeCutsRegistry.cxx
         )
 target_include_directories(AnalysisTreeCutsRegistry
+        PUBLIC
+        ${AnalysisTreeCuts_SOURCE_DIR}
         PRIVATE
         ${CMAKE_CURRENT_BINARY_DIR})
 target_link_libraries(AnalysisTreeCutsRegistry
