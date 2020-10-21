@@ -8,7 +8,7 @@ int AuAu1_23() {
   using namespace AnalysisTree;
 
   {
-    const char *branch = "event";
+    const char *branch = "event_header";
     const char *name = "default";
 
     std::vector<SimpleCut> cuts;
@@ -26,7 +26,7 @@ int AuAu1_23() {
     SimpleCut good_start_meta_cut({branch, "good_start_meta"}, 0.5, 1.5);
 
     const char *cuts_name = "hades/auau/1.23/event_cuts/standard";
-    std::string branch_name = ""; // FIXME
+    std::string branch_name = "event_header";
     RegisterCuts(cuts_name, Cuts(branch_name, {
         vtx_xy_cut,
         vtx_z_cut,
