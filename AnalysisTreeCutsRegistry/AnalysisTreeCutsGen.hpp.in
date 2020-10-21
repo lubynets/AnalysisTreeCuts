@@ -17,6 +17,11 @@ const char *CutsEnvironNameForLibraryPath() {
   return "@AnalysisTreeCuts_ENVNAME@";
 }
 
+inline
+const char* CurrentSourceDir() {
+  return "@CMAKE_CURRENT_SOURCE_DIR@";
+}
+
 
 }
 

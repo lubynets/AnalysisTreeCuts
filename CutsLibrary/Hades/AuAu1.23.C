@@ -1,5 +1,6 @@
 #include "AnalysisTree/SimpleCut.hpp"
 #include "AnalysisTree/Cuts.hpp"
+#include "CutsRegistry.hpp"
 
 #include <TMath.h>
 

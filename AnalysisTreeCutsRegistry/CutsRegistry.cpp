@@ -7,6 +7,7 @@
 
 #include <filesystem>
 #include <TROOT.h>
+#include <TInterpreter.h>
 
 namespace fs = std::filesystem;
 
@@ -41,6 +42,8 @@ void AnalysisTree::LoadCutsFromFile(const char *path) {
       auto full_path = lookup_path / p;
 
       int err_code;
+      auto interpreter = gROOT->GetInterpreter();
+      interpreter->AddIncludePath(CurrentSourceDir());
       gROOT->Macro(full_path.c_str(), &err_code, false);
       if (err_code == 0) {
         std::cout << "Loaded cuts from " << full_path << std::endl;
