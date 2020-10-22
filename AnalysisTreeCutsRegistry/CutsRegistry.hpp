@@ -39,6 +39,10 @@ public:
     return cuts_[name];
   }
 
+  Cuts at(const std::string &name) {
+    return cuts_.at(name);
+  }
+
 private:
   std::map<std::string, Cuts> cuts_;
 };
