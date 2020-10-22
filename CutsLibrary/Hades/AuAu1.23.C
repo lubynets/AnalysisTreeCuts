@@ -12,9 +12,8 @@ int AuAu1_23() {
     const char *name = "default";
 
     std::vector<SimpleCut> cuts;
-    SimpleCut vtx_xy_cut({"vtx_x", "vtx_y"}, [](std::vector<double> r) {
-      return sqrt(r.at(0) * r.at(0) + r.at(1) * r.at(1)) < 3.0;
-    });
+    SimpleCut vtx_x_cut({branch, "vtx_x"}, -3.0, 3.0);
+    SimpleCut vtx_y_cut({branch, "vtx_y"}, -3.0, 3.0);
     SimpleCut vtx_z_cut({branch, "vtx_z"}, -60.0, 0.0);
     SimpleCut vtx_chi2_cut({branch, "vtx_chi2"}, 0.5, 40);
     SimpleCut good_vertex_cut({branch, "good_vertex_cluster"}, 0.5, 1.5);
@@ -28,7 +27,8 @@ int AuAu1_23() {
     const char *cuts_name = "hades/auau/1.23/event_cuts/standard";
     std::string branch_name = "event_header";
     RegisterCuts(cuts_name, Cuts(branch_name, {
-        vtx_xy_cut,
+        vtx_x_cut,
+        vtx_y_cut,
         vtx_z_cut,
         vtx_chi2_cut,
         good_vertex_cut,
