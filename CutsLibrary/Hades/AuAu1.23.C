@@ -24,9 +24,12 @@ int AuAu1_23() {
     SimpleCut good_start_veto_cut({branch, "good_start_veto"}, 0.5, 1.5);
     SimpleCut good_start_meta_cut({branch, "good_start_meta"}, 0.5, 1.5);
 
-    const char *cuts_name = "hades/auau/1.23/event_cuts/standard";
+    SimpleCut min_bias_cut({branch, "physical_trigger_2"}, 0.5, 1.5);
+    SimpleCut central_cut({branch, "physical_trigger_3"}, 0.5, 1.5);
+
+    const char *min_bias_cuts_name = "hades/auau/1.23/event_cuts/standard/pt2";
     std::string branch_name = "event_header";
-    RegisterCuts(cuts_name, Cuts(branch_name, {
+    RegisterCuts(min_bias_cuts_name, Cuts(branch_name, {
         vtx_x_cut,
         vtx_y_cut,
         vtx_z_cut,
@@ -37,7 +40,23 @@ int AuAu1_23() {
         no_pile_up_start_cut,
         no_veto_cut,
         good_start_veto_cut,
-        good_start_meta_cut}));
+        good_start_meta_cut,
+        min_bias_cut}));
+
+    const char *central_cuts_name = "hades/auau/1.23/event_cuts/standard/pt3";
+    RegisterCuts(central_cuts_name, Cuts(branch_name, {
+        vtx_x_cut,
+        vtx_y_cut,
+        vtx_z_cut,
+        vtx_chi2_cut,
+        good_vertex_cut,
+        good_vertex_candidate_cut,
+        good_start_cut,
+        no_pile_up_start_cut,
+        no_veto_cut,
+        good_start_veto_cut,
+        good_start_meta_cut,
+        central_cut}));
   }
 
   return 0;
