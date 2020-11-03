@@ -1,6 +1,9 @@
 project(AnalysisTreeCuts CXX)
 cmake_minimum_required(VERSION 3.11)
 
+list(APPEND CMAKE_PREFIX_PATH ${ROOTSYS})
+list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
+
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules)
 include(AnalysisTree)
 include(CMakeDependentOption)
@@ -13,9 +16,8 @@ set(AnalysisTreeCuts_ENVNAME
         CUTS_LIBRARY_PATH CACHE STRING "Environment variable to set different lookup path")
 message("Cuts default Library Path: ${AnalysisTreeCuts_LIBRARY_PATH}")
 
-
-
 add_subdirectory(AnalysisTreeCutsRegistry)
+
 
 set(HEADERS
     CbmCuts.h
