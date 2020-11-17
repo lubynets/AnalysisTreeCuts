@@ -16,7 +16,7 @@ Cuts* GetCbmEventCuts(std::string branch, std::string name="CbmGoodEvent") {
 Cuts* GetCbmTrackCuts(std::string branch, std::string name="CbmGoodVertexTrack") {
   SimpleCut vtx_chi2_track_cut({branch, "vtx_chi2"}, 0, 3);
   SimpleCut nhits_cut({branch, "nhits"}, 4, 100);
-  SimpleCut chi2_cut({{branch, "chi2"}, {branch, "ndf"}}, [](std::vector<double> par){ return par[0]/par[1] < 3; });
+  SimpleCut chi2_cut({branch + ".chi2", branch + ".ndf"}, [](std::vector<double> par){ return par[0]/par[1] < 3; });
   SimpleCut eta_cut({branch, "eta"}, 0.2, 6);
 
   Cuts* vertex_tracks_cuts = new Cuts(std::move(name), {vtx_chi2_track_cut, nhits_cut, chi2_cut, eta_cut});
@@ -26,7 +26,7 @@ Cuts* GetCbmTrackCuts(std::string branch, std::string name="CbmGoodVertexTrack")
 Cuts* GetCbmCentralityTrackCuts(std::string branch, std::string name="CbmGoodCentralityTrack") {
   SimpleCut vtx_chi2_track_cut({branch, "vtx_chi2"}, 0, 3);
   SimpleCut nhits_cut({branch, "nhits"}, 4, 100);
-  SimpleCut chi2_cut({{branch, "chi2"}, {branch, "ndf"}}, [](std::vector<double> par){ return par[0]/par[1] < 10; });
+  SimpleCut chi2_cut({branch + ".chi2", branch + ".ndf"}, [](std::vector<double> par){ return par[0]/par[1] < 10; });
   SimpleCut eta_cut({branch, "eta"}, 0, 3);
 
   Cuts* vertex_tracks_cuts = new Cuts(std::move(name), {vtx_chi2_track_cut, nhits_cut, chi2_cut, eta_cut});
