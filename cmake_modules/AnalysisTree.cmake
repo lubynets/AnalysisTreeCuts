@@ -1,6 +1,4 @@
 
-find_package(AnalysisTree QUIET)
-
 
 set(AnalysisTree_BUILD_EXAMPLES OFF)
 
