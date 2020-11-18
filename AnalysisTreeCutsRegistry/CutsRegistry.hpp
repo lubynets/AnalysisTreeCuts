@@ -20,10 +20,11 @@ public:
   struct cuts_exist_exception : public std::exception {};
 
   [[nodiscard]] std::vector<std::string> GetCutNames() const {
-    std::vector<std::string> names(cuts_.size());
-    std::transform(std::begin(cuts_), std::end(cuts_),
-                   std::inserter(names, std::begin(names)),
-                   [](auto &pair) { return pair.first; });
+    std::vector<std::string> names;
+    names.reserve(cuts_.size());
+    for (auto &elem : cuts_) {
+      names.emplace_back(elem.first);
+    }
     return names;
   }
 
