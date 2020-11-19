@@ -17,7 +17,7 @@ int AuAu1_23() {
     auto vtx_z_cut = RangeCut("vtx_z", -60.0, 0.0);
     auto vtx_chi2_cut = RangeCut("vtx_chi2", 0.5, 40);
     auto good_vertex_cut = EqualsCut("good_vertex_cluster", 1);
-    auto good_vertex_candidate_cut = EqualsCut(branch, "good_vertex_candidate", 1);
+    auto good_vertex_candidate_cut = EqualsCut("good_vertex_candidate", 1);
     auto good_start_cut = EqualsCut("good_start", 1);
     auto no_pile_up_start_cut = EqualsCut("no_pile_up_start", 1);
     auto no_veto_cut = EqualsCut("no_veto", 1);
