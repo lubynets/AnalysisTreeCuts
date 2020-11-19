@@ -12,21 +12,21 @@ int AuAu1_23() {
     const char *name = "default";
 
     std::vector<SimpleCut> cuts;
-    SimpleCut vtx_x_cut({branch, "vtx_x"}, -3.0, 3.0);
-    SimpleCut vtx_y_cut({branch, "vtx_y"}, -3.0, 3.0);
-    SimpleCut vtx_z_cut({branch, "vtx_z"}, -60.0, 0.0);
-    SimpleCut vtx_chi2_cut({branch, "vtx_chi2"}, 0.5, 40);
-    SimpleCut good_vertex_cut({branch, "good_vertex_cluster"}, 0.5, 1.5);
-    SimpleCut good_vertex_candidate_cut({branch, "good_vertex_candidate"}, 0.5, 1.5);
-    SimpleCut good_start_cut({branch, "good_start"}, 0.5, 1.5);
-    SimpleCut no_pile_up_start_cut({branch, "no_pile_up_start"}, 0.5, 1.5);
-    SimpleCut no_veto_cut({branch, "no_veto"}, 0.5, 1.5);
-    SimpleCut good_start_veto_cut({branch, "good_start_veto"}, 0.5, 1.5);
-    SimpleCut good_start_meta_cut({branch, "good_start_meta"}, 0.5, 1.5);
+    auto vtx_x_cut = RangeCut("vtx_x", -3.0, 3.0);
+    auto vtx_y_cut = RangeCut("vtx_y", -3.0, 3.0);
+    auto vtx_z_cut = RangeCut("vtx_z", -60.0, 0.0);
+    auto vtx_chi2_cut = RangeCut("vtx_chi2", 0.5, 40);
+    auto good_vertex_cut = EqualsCut("good_vertex_cluster", 1);
+    auto good_vertex_candidate_cut = EqualsCut(branch, "good_vertex_candidate", 1);
+    auto good_start_cut = EqualsCut("good_start", 1);
+    auto no_pile_up_start_cut = EqualsCut("no_pile_up_start", 1);
+    auto no_veto_cut = EqualsCut("no_veto", 1);
+    auto good_start_veto_cut = EqualsCut("good_start_veto", 1);
+    auto good_start_meta_cut = EqualsCut("good_start_meta", 1);
 
-    SimpleCut min_bias_cut({branch, "physical_trigger_2"}, 0.5, 1.5);
-    SimpleCut central_cut({branch, "physical_trigger_3"}, 0.5, 1.5);
-    SimpleCut szymon_cut({branch, "has_passed_szymon_cut"}, 0.5, 1.5);
+    auto min_bias_cut = EqualsCut("physical_trigger_2", 1);
+    auto central_cut = EqualsCut("physical_trigger_3", 1);
+    auto szymon_cut = EqualsCut("has_passed_szymon_cut", 1);
 
     const char *min_bias_cuts_name = "hades/auau/1.23/event_cuts/standard/pt2";
     std::string branch_name = "event_header";
