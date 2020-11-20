@@ -5,6 +5,10 @@ list(APPEND CMAKE_PREFIX_PATH ${ROOTSYS})
 list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules)
+
+
+set(AnalysisTree_GIT_TAG v1.0.5 CACHE STRING "Git tag of the AnalysisTree")
+
 include(AnalysisTree)
 include(CMakeDependentOption)
 
