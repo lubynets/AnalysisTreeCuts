@@ -15,6 +15,7 @@ int AuAu1_23() {
     auto vtx_x_cut = RangeCut("event_header.vtx_x", -3.0, 3.0);
     auto vtx_y_cut = RangeCut("event_header.vtx_y", -3.0, 3.0);
     auto vtx_z_cut = RangeCut("event_header.vtx_z", -60.0, 0.0);
+    auto vtx_z_off_target_cut = RangeCut("event_header.vtx_z", -90.0, -70.0);
     auto vtx_chi2_cut = RangeCut("event_header.vtx_chi2", 0.5, 40);
     auto good_vertex_cut = EqualsCut("event_header.good_vertex_cluster", 1);
     auto good_vertex_candidate_cut = EqualsCut("event_header.good_vertex_candidate", 1);
@@ -58,6 +59,21 @@ int AuAu1_23() {
         good_start_veto_cut,
         good_start_meta_cut,
         central_cut}));
+
+    const char *off_target_cuts_name = "hades/auau/1.23/event_cuts/standard/off_target";
+    RegisterCuts(off_target_cuts_name, Cuts(branch_name, {
+        vtx_x_cut,
+        vtx_y_cut,
+        vtx_z_off_target_cut,
+        vtx_chi2_cut,
+        good_vertex_cut,
+        good_vertex_candidate_cut,
+        good_start_cut,
+        no_pile_up_start_cut,
+        no_veto_cut,
+        good_start_veto_cut,
+        good_start_meta_cut,
+        min_bias_cut}));
 
     const char *szymon_cuts_name = "hades/auau/1.23/event_cuts/standard/szymon";
     RegisterCuts(szymon_cuts_name, Cuts(branch_name, {
