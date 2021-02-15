@@ -62,18 +62,19 @@ int AuAu1_23() {
 
     const char *off_target_cuts_name = "hades/auau/1.23/event_cuts/standard/off_target";
     RegisterCuts(off_target_cuts_name, Cuts(branch_name, {
-        vtx_x_cut,
-        vtx_y_cut,
+//        vtx_x_cut,
+//        vtx_y_cut,
         vtx_z_off_target_cut,
-        vtx_chi2_cut,
-        good_vertex_cut,
-        good_vertex_candidate_cut,
-        good_start_cut,
-        no_pile_up_start_cut,
-        no_veto_cut,
-        good_start_veto_cut,
-        good_start_meta_cut,
-        min_bias_cut}));
+//        vtx_chi2_cut,
+//        good_vertex_cut,
+//        good_vertex_candidate_cut,
+//        good_start_cut,
+//        no_pile_up_start_cut,
+//        no_veto_cut,
+//        good_start_veto_cut,
+//        good_start_meta_cut,
+//        min_bias_cut
+                                                         }));
 
     const char *szymon_cuts_name = "hades/auau/1.23/event_cuts/standard/szymon";
     RegisterCuts(szymon_cuts_name, Cuts(branch_name, {
