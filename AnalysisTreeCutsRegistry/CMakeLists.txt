@@ -23,6 +23,7 @@ add_library(AnalysisTreeCutsRegistry SHARED
         )
 target_compile_definitions(AnalysisTreeCutsRegistry PRIVATE
         $<$<BOOL:${Boost_FOUND}>:BOOST_FOUND>
+        $<$<BOOL:${Boost_FILESYSTEM_FOUND}>:Boost_FILESYSTEM_FOUND>
         )
 target_include_directories(AnalysisTreeCutsRegistry
         PUBLIC
@@ -36,5 +37,5 @@ target_link_libraries(AnalysisTreeCutsRegistry
         PRIVATE
         #see https://gitlab.kitware.com/cmake/cmake/-/issues/17834
         $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>
-        $<$<BOOL:${Boost_FOUND}>:Boost::filesystem>
+        $<$<BOOL:${Boost_FILESYSTEM_FOUND}>:Boost::filesystem>
         )
