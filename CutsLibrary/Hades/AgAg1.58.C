@@ -60,7 +60,7 @@ int AgAg1_58() {
         good_start_meta_cut,
         erat_cut}));
 
-    const char *szymon_cuts_name = "hades/agag/1.58/event_cuts/erat";
+    const char *szymon_cuts_name = "hades/agag/1.58/event_cuts/szymon";
     RegisterCuts(szymon_cuts_name, Cuts(branch_name, {
         vtx_x_cut,
         vtx_y_cut,
