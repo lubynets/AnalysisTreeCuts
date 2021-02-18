@@ -16,7 +16,7 @@ namespace fs = std::filesystem;
 #   endif
 #endif
 
-#if defined(BOOST_FOUND) && !defined(USE_STD_FILESYSTEM)
+#if defined(BOOST_FILESYSTEM_FOUND) && !defined(USE_STD_FILESYSTEM)
 #   define BOOST_FILESYSTEM_NO_DEPRECATED
 #   include <boost/filesystem.hpp>
 #   define USE_BOOST_FILESYSTEM
