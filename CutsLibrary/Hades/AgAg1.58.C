@@ -4,7 +4,7 @@
 
 #include <TMath.h>
 
-int AuAu1_23() {
+int AgAg1_23() {
   using namespace AnalysisTree;
 
   {
@@ -45,8 +45,8 @@ int AuAu1_23() {
         good_start_veto_cut,
         good_start_meta_cut}));
 
-    const char *central_cuts_name = "hades/agag/1.58/event_cuts/erat";
-    RegisterCuts(central_cuts_name, Cuts(branch_name, {
+    const char *erat_cuts = "hades/agag/1.58/event_cuts/erat";
+    RegisterCuts(erat_cuts, Cuts(branch_name, {
         vtx_x_cut,
         vtx_y_cut,
         vtx_z_cut,
