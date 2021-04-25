@@ -1,7 +1,6 @@
 
 find_package(ROOT REQUIRED)
-find_package(Boost QUIET COMPONENTS filesystem)
-
+find_package(Boost COMPONENTS filesystem)
 
 configure_file(AnalysisTreeCutsGen.hpp.in AnalysisTreeCutsGen.hpp)
 
@@ -23,7 +22,7 @@ add_library(AnalysisTreeCutsRegistry SHARED
         )
 target_compile_definitions(AnalysisTreeCutsRegistry PRIVATE
         $<$<BOOL:${Boost_FOUND}>:BOOST_FOUND>
-        $<$<BOOL:${Boost_FILESYSTEM_FOUND}>:Boost_FILESYSTEM_FOUND>
+        $<$<BOOL:${Boost_FILESYSTEM_FOUND}>:BOOST_FILESYSTEM_FOUND>
         )
 target_include_directories(AnalysisTreeCutsRegistry
         PUBLIC
