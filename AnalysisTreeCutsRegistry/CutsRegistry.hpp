@@ -5,6 +5,7 @@
 #ifndef CUTS_ANALYSISTREECUTSREGISTRY_CUTSREGISTRY_HPP
 #define CUTS_ANALYSISTREECUTSREGISTRY_CUTSREGISTRY_HPP
 
+#include <iostream>
 #include <map>
 #include <vector>
 
