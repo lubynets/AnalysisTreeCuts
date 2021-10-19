@@ -28,7 +28,7 @@ AnalysisTree::CutsRegistry &AnalysisTree::CutsRegistry::Instance() {
   return instance;
 }
 
-void AnalysisTree::RegisterCuts(const std::string &name, const Cuts &cuts) {
+void AnalysisTree::RegisterCuts(const std::string &name, const ANALYSISTREE_CUTS &cuts) {
   CutsRegistry::Instance().RegisterCuts(name, cuts);
 }
 

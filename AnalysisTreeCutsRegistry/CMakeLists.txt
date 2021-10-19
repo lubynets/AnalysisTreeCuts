@@ -32,6 +32,7 @@ target_include_directories(AnalysisTreeCutsRegistry
 target_link_libraries(AnalysisTreeCutsRegistry
         PUBLIC
         AnalysisTreeInfra
+        $<TARGET_NAME_IF_EXISTS:AnalysisTreeInfraVersion1>
         ROOT::Core
         PRIVATE
         #see https://gitlab.kitware.com/cmake/cmake/-/issues/17834
