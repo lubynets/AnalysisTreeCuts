@@ -18,7 +18,7 @@
 # define ANALYSISTREE_CUTS ::AnalysisTree::Version1::Cuts
 #endif
 
-namespace AnalysisTree {
+namespace AnalysisTree::Version1 {
 
 class CutsRegistry {
 
@@ -70,6 +70,6 @@ void LoadCutsFromFile(const char *path);
 
 } // namespace AnalysisTree
 
-#define gCutsRegistry (::AnalysisTree::CutsRegistry::Instance())
+#define gCutsRegistry (::AnalysisTree::Version1::CutsRegistry::Instance())
 
 #endif //CUTS_ANALYSISTREECUTSREGISTRY_CUTSREGISTRY_HPP

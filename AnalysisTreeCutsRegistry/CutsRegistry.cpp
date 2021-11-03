@@ -23,12 +23,12 @@ namespace fs = std::filesystem;
 namespace fs = boost::filesystem;
 #endif
 
-AnalysisTree::CutsRegistry &AnalysisTree::CutsRegistry::Instance() {
+AnalysisTree::Version1::CutsRegistry &AnalysisTree::Version1::CutsRegistry::Instance() {
   static CutsRegistry instance;
   return instance;
 }
 
-void AnalysisTree::RegisterCuts(const std::string &name, const ANALYSISTREE_CUTS &cuts) {
+void AnalysisTree::Version1::RegisterCuts(const std::string &name, const ANALYSISTREE_CUTS &cuts) {
   CutsRegistry::Instance().RegisterCuts(name, cuts);
 }
 
@@ -45,7 +45,7 @@ std::vector<fs::path> GetLookupPaths() {
   return result;
 }
 
-void AnalysisTree::LoadCutsFromFile(const char *path) {
+void AnalysisTree::Version1::LoadCutsFromFile(const char *path) {
   fs::path p(path);
 
   if (p.is_relative()) {
@@ -82,7 +82,7 @@ bool IsRegularFile(const fs::directory_entry& e) {
 
 }
 
-void AnalysisTree::LoadCutsLibrary(const char *path) {
+void AnalysisTree::Version1::LoadCutsLibrary(const char *path) {
   fs::path library_path = std::string(path).empty() ? AnalysisTree::CutsDefaultLibraryPaths() : fs::path(path);
   fs::recursive_directory_iterator library_path_iterator(library_path);
 
