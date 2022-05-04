@@ -6,7 +6,7 @@ configure_file(AnalysisTreeCutsGen.hpp.in AnalysisTreeCutsGen.hpp)
 
 include(${ROOT_USE_FILE})
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/analysistree-build/include)
 ROOT_GENERATE_DICTIONARY(G__AnalysisTreeCutsRegistry
         CutsRegistry.hpp
         LINKDEF AnalysisTreeCutsRegistryLinkDef.hpp
