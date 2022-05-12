@@ -6,7 +6,7 @@ configure_file(AnalysisTreeCutsGen.hpp.in AnalysisTreeCutsGen.hpp)
 
 include(${ROOT_USE_FILE})
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${AnalysisTree_BINARY_DIR}/include)
 ROOT_GENERATE_DICTIONARY(G__AnalysisTreeCutsRegistry
         CutsRegistry.hpp
         LINKDEF AnalysisTreeCutsRegistryLinkDef.hpp
@@ -32,6 +32,7 @@ target_include_directories(AnalysisTreeCutsRegistry
 target_link_libraries(AnalysisTreeCutsRegistry
         PUBLIC
         AnalysisTreeInfra
+        $<TARGET_NAME_IF_EXISTS:AnalysisTreeInfraVersion1>
         ROOT::Core
         PRIVATE
         #see https://gitlab.kitware.com/cmake/cmake/-/issues/17834

@@ -28,7 +28,7 @@ AnalysisTree::CutsRegistry &AnalysisTree::CutsRegistry::Instance() {
   return instance;
 }
 
-void AnalysisTree::RegisterCuts(const std::string &name, const Cuts &cuts) {
+void AnalysisTree::RegisterCuts(const std::string &name, const ANALYSISTREE_CUTS &cuts) {
   CutsRegistry::Instance().RegisterCuts(name, cuts);
 }
 
@@ -63,6 +63,8 @@ void AnalysisTree::LoadCutsFromFile(const char *path) {
     }
   } else {
     int err_code;
+    auto interpreter = gROOT->GetInterpreter();
+    interpreter->AddIncludePath(CurrentSourceDir());
     gROOT->Macro(p.c_str(), &err_code, false);
     if (err_code == 0) {
       std::cout << "Loaded cuts from " << p << std::endl;

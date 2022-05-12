@@ -5,10 +5,18 @@
 #ifndef CUTS_ANALYSISTREECUTSREGISTRY_CUTSREGISTRY_HPP
 #define CUTS_ANALYSISTREECUTSREGISTRY_CUTSREGISTRY_HPP
 
+#include <iostream>
 #include <map>
 #include <vector>
 
-#include <AnalysisTree/Cuts.hpp>
+#include <AnalysisTree/AnalysisTreeVersion.hpp>
+#if ANALYSISTREE_VERSION_MAJOR == 1
+# include <AnalysisTree/Cuts.hpp>
+# define ANALYSISTREE_CUTS ::AnalysisTree::Cuts
+#elif ANALYSISTREE_VERSION_MAJOR == 2
+# include <AnalysisTree/infra-1.0/Cuts.hpp>
+# define ANALYSISTREE_CUTS ::AnalysisTree::Version1::Cuts
+#endif
 
 namespace AnalysisTree {
 
@@ -28,7 +36,7 @@ public:
     return names;
   }
 
-  void RegisterCuts(const std::string &name, const Cuts &cuts) {
+  void RegisterCuts(const std::string &name, const ANALYSISTREE_CUTS &cuts) {
     auto emplace_result = cuts_.emplace(name, cuts);
     if (!emplace_result.second) {
       throw cuts_exist_exception();
@@ -36,16 +44,16 @@ public:
     std::cout << "Registered cut '" << name << "'" << std::endl;
   }
 
-  Cuts operator[](const std::string &name) {
+  ANALYSISTREE_CUTS operator[](const std::string &name) {
     return cuts_[name];
   }
 
-  Cuts at(const std::string &name) {
+  ANALYSISTREE_CUTS at(const std::string &name) {
     return cuts_.at(name);
   }
 
 private:
-  std::map<std::string, Cuts> cuts_;
+  std::map<std::string, ANALYSISTREE_CUTS> cuts_;
 };
 
 
@@ -54,7 +62,7 @@ private:
  * @param name
  * @param cuts
  */
-void RegisterCuts(const std::string& name, const Cuts &cuts);
+void RegisterCuts(const std::string& name, const ANALYSISTREE_CUTS &cuts);
 
 void LoadCutsLibrary(const char *path = "");
 
