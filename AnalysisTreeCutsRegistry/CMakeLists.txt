@@ -39,3 +39,33 @@ target_link_libraries(AnalysisTreeCutsRegistry
         $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>
         $<$<BOOL:${Boost_FILESYSTEM_FOUND}>:Boost::filesystem>
         )
+install(TARGETS AnalysisTreeCutsRegistry EXPORT AnalysisTreeCutsRegistryTargets
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        )
+install(
+        FILES
+        CutsRegistry.hpp
+        DESTINATION
+        include/AnalysisTreeCutsRegistry
+        COMPONENT
+        Devel
+)
+
+set(PCM_FILE_NAME libAnalysisTreeCutsRegistry)
+
+install(
+        FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/${PCM_FILE_NAME}_rdict.pcm"
+        DESTINATION
+        lib
+        OPTIONAL
+)
+
+install(
+        FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/${PCM_FILE_NAME}.rootmap"
+        DESTINATION
+        lib
+        OPTIONAL
+)
